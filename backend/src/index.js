@@ -1,5 +1,5 @@
+import cors from 'cors';
 import express from 'express';
-
 import fetch from 'node-fetch';
 
 const BASE_URL = 'http://jsonplaceholder.typicode.com';
@@ -7,6 +7,7 @@ const BASE_URL = 'http://jsonplaceholder.typicode.com';
 const app = express();
 
 app.use(express.json())
+app.use(cors());
 
 app.get('/', (req, res) => {
   return res.json({message: 'Hello World..'})

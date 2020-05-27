@@ -7,6 +7,7 @@
     "dev": "nodemon --inspect=127.0.0.1:8756 -r sucrase/register"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0"
   },
