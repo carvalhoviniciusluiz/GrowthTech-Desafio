@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/22005684/83093138-4061f200-a075-11ea-8ae6-9dd965d9e07a.gif" alt="Preview 1" />
+  <img src="https://user-images.githubusercontent.com/22005684/83184038-38e72b00-a0ff-11ea-8e33-f79951b46bbc.gif" alt="Preview 1" />
 </p>
 
 ## :rocket: Sobre o projeto
