@@ -17,6 +17,7 @@
 <p align="center">
   <a href="#rocket-sobre-o-projeto">Sobre o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#8ball-instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#metal-como-usar-o-insomnia">Como usar o insomnia</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#loop-link-do-desafio">Link do desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
@@ -54,6 +55,29 @@ Baixando as dependências do sistema:
 Subindo um servidor de desenvolvimento:
 
     yarn dev
+
+## :metal: Como usar o Insomnia
+
+[Insomnia](https://insomnia.rest/download/) é uma ferramenta que facilita testes de api. Você pode importar as rotas do projeto clique no butão `Run in Insomnia` que fica localizado no topo da página para facilitar os seus testes.
+
+### **Get all users**
+
+Retorna somente usuários. Trabalha com os seguintes filtros:
+  - `group-company-by`: Agrupa todos os usuário de uma determinada companhia [string];
+  - `group-all-by`: Agrupa todos os usuário de uma grupo de companhias [array];
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22005684/83170552-1a773480-a0eb-11ea-85ae-e1cf91cd77bb.png" alt="Image 1" />
+</p>
+
+### **Get all posts by user**
+Devolve todas as postagens de um usuário específico.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22005684/83170574-2236d900-a0eb-11ea-858d-09a0cf2c91ce.png" alt="Image 2" />
+</p>
+
+__IMPORTANTE__: É possível a qualquer momento disparar os tests de api para produção, para isso, altere o ambiente insomnia de `dev` pra `prod`.
 
 ## :loop: Link do desafio
 
