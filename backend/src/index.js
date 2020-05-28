@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import fetch from 'node-fetch';
 
-import { groupBy } from './util';
+import { groupBy, groupAllBy } from './util';
 
 const BASE_URL = 'http://jsonplaceholder.typicode.com';
 
@@ -16,23 +16,35 @@ app.get('/', (req, res) => {
 })
 
 app.get('/users', async (req, res) => {
-  const { 'group-company-by': filter } = req.query;
+  const {
+    'group-company-by': filterOne,
+    'group-all-by': filterAll,
+  } = req.query;
 
-  const hasFilter = !!filter;
+  const hasFilterOne = !!filterOne;
+  const hasFilterall = !!filterAll;
 
   try {
     const response = await fetch(`${BASE_URL}/users`)
 
     const users = await response.json()
 
-    const data = users.map(({ id, name, company: { name: company } }) => ({
+    let data = users.map(({ id, name, company: { name: company } }) => ({
       id,
       name,
       company,
     }))
 
+    const key = 'company';
+
+    if (hasFilterall) {
+      data = groupAllBy(data, key, filterAll);
+    } else {
+      data = hasFilterOne ? groupBy(data, key, filterOne) : data;
+    }
+
     return res.json({
-      data: hasFilter ? groupBy(data, 'company', filter) : data,
+      data,
     })
   } catch (e) {
     return res.sendStatus(400);
