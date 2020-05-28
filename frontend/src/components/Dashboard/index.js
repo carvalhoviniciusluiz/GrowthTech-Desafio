@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   const [posts, setPosts] = useState([]);
 
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const [loading, setLoading] = useState(false)
 
   const handleChange = e => {
