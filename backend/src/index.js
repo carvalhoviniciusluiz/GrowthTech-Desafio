@@ -2,6 +2,8 @@ import cors from 'cors';
 import express from 'express';
 import fetch from 'node-fetch';
 
+import { groupBy } from './util';
+
 const BASE_URL = 'http://jsonplaceholder.typicode.com';
 
 const app = express();
@@ -14,6 +16,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/users', async (req, res) => {
+  const { 'group-company-by': filter } = req.query;
+
+  const hasFilter = !!filter;
+
   try {
     const response = await fetch(`${BASE_URL}/users`)
 
@@ -26,7 +32,7 @@ app.get('/users', async (req, res) => {
     }))
 
     return res.json({
-      data,
+      data: hasFilter ? groupBy(data, 'company', filter) : data,
     })
   } catch (e) {
     return res.sendStatus(400);
