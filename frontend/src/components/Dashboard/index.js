@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import qs from 'qs';
 
 import api from '../../services/api';
-
 import BabyYoda from '../../assets/img/baby-yoda.jpg';
 
 import {
@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   const [posts, setPosts] = useState([]);
 
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false)
 
   const handleChange = e => {
@@ -49,6 +49,49 @@ export default function Dashboard() {
     })()
   }, [user])
 
+  const handleKeyPressed = async e => {
+    if (e.key === "Enter") {
+      const terms = e.target.value.split(',');
+
+      const query = qs.stringify({
+        'group-all-by': terms,
+      });
+
+      const res = await api.get(`/users?${query}`);
+      const { data } = res.data;
+
+      setUsers(data.reverse());
+    }
+  }
+
+  const renderMenuItem = (user) => {
+    const {grouped} = user;
+
+    if (Array.isArray(grouped)) {
+      return grouped.map(user => (
+        <li key={user.id}>
+          <a
+            className="highlight"
+            href="#/#"
+            onClick={() => setUser(user)}>
+              <strong>{user.name}</strong>
+              <small>{user.company}</small>
+            </a>
+        </li>
+      ));
+    } else {
+      return (
+        <li key={user.id}>
+          <a href="#/#" onClick={() => setUser(user)}>
+            <strong>{user.name}</strong>
+            <small>{user.company}</small>
+          </a>
+        </li>
+      )
+    }
+
+  }
+
   return (
     <div className="container">
       <input
@@ -60,11 +103,15 @@ export default function Dashboard() {
       <span className="hamburger"></span>
 
       <ul>
-        {users.map(user => (
-          <li key={user.id}>
-            <a href="#/#" onClick={() => setUser(user)}>{user.name}</a>
-          </li>
-        ))}
+        <li>
+          <input
+            type="text"
+            placeholder="Informar empresa [ENTER]"
+            onKeyPress={handleKeyPressed}/>
+          <hr/>
+        </li>
+
+        {users.map(user => renderMenuItem(user))}
       </ul>
 
       {user === null && (
