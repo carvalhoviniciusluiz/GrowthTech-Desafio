@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "sucrase ./backend/src -d ./dist --transforms imports",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "sucrase": "^3.15.0"
+  }
+}
