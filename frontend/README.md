@@ -1,5 +1,5 @@
 <h1 align="center">
-  ## GrowthTech#Desafio - Backend
+  ## GrowthTech#Desafio - Frontend
 </h1>
 
 <blockquote align="center">“Why so serious”!</blockquote>
@@ -36,7 +36,7 @@ Uma empresa deseja realizar um monitoramento de outros grupos empresariais em um
 
 ### **As ferramentas que você irá encontrar**
 
-Aplicação criada do zero usando [Express.js](https://expressjs.com/pt-br/api.html), conta com as seguintes ferramentas:
+Aplicação criada do zero usando [React](https://pt-br.reactjs.org/), conta com as seguintes ferramentas:
 
 - React;
 - Axios;
