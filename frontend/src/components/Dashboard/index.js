@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import api from '../../services/api';
 
+import BabyYoda from '../../assets/img/baby-yoda.jpg';
+
 import {
   Loading,
   LoadingIcon
@@ -70,7 +72,10 @@ export default function Dashboard() {
           <h1>hello world</h1>
 
           <div className="intro">
-            <p>Esse trecho `<span>os quais a empresa em que trabalham fazem parte de um grupo</span>` não ficou claro {':{'}</p>
+            <div className="content">
+              <img src={BabyYoda} alt="Baby Yoda"/>
+              <p>Que a força esteja com você. {':}'}</p>
+            </div>
           </div>
 
           <div className="repo">
