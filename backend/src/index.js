@@ -53,6 +53,8 @@ app.get('/users/:id/posts', async (req, res) => {
   }
 })
 
-app.listen(3333, () => {
+const port = process.env.PORT || 3333
+
+app.listen(port, () => {
   console.log('[backend] started! 🙌')
 })
